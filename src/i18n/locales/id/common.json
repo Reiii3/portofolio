@@ -1,0 +1,57 @@
+{
+    "topPanel": {
+        "contact": "Kontak",
+        "language": "Bahasa",
+        "listLink": {
+            "about": "Tentang",
+            "stack": "Stack",
+            "project": "Proyek",
+            "contact": "Kontak"
+        }
+    },
+    "header": {
+        "tag": "Hai, saya Riza Maulana",
+        "title": "Merakit software dari antarmuka sampai",
+        "scondTitle": "lapisan sistem Android.",
+        "desc": "Siswa Rekayasa Perangkat Lunak kelas 11 yang senang berpindah dari web, mobile, sampai eksperimen root dan kernel Android — belajar dengan cara membangun tools yang benar-benar dipakai.",
+        "btn": {
+            "project": "Lihat Proyek",
+            "contact": "Kontak Saya"
+        },
+        "me": {
+            "coding": "Tahun Coding",
+            "tools": "Bahasa & tools yang dipakai",
+            "focus": {
+                "title": "Fokus saat ini",
+                "desc": "Android system tooling, Android App & web dengan Next.js"
+            }
+        }
+    },
+    "about": {
+        "tag": "Tentang Saya",
+        "title": "Saya membangun tools system android dengan cara melakukan konfigurasi pada system untuk mengoptimalkan performa",
+        "desc": {
+            "me": "saya adalah siswa kelas 11 jurusan Rekayasa Perangkat Lunak, mengerjakan proyek dari front-end web dengan React dan Next.js, sampai eksperimen di sisi Android — termasuk modifikasi environment root dengan KernelSU dan pengembangan aplikasi native dengan Kotlin serta Jetpack Compose.",
+            "work": "Ada banyak bahasa Program yang sudah saya pelajari terutama yang paling sering saya gunakan yaitu Bash dan Javascript, penggunaan kedua bahasa itu saya gunakan untuk membuat sebuah plugin Aplikasi Manager Android Seperti KernelSU (ROOT Manager) dan AxManager (No Root Manager), dengan menggunakan antarmuka berbasis web app saya dapat mengintegrasikan bahasa bash ini melewati APi bawaan dari KernelSU yang di Gunakan di AxManager juga dengan ini user dapat dengan mudah melakukan Configurasi System Android lebih lanjut dengan mudah dan cepat. dan diantara lain bahasa program yaang sudah saya pelajari seperti Java, Kotlin, Typescript, Python, dan ada juga Framework Seperti React, Next.js, TailwindCSS, Vite dan Jetpack Compose"
+        }
+    },
+    "techStack": {
+        "language": {
+            "title": "Tumpukan Bahasa Pemrograman",
+            "desc": "Inilah bahasa pemrograman yang sudah saya kuasai selama 5 tahun terakhir ini dan semenjak saya mengenal coding di kelas 1 smp, ada sekitar 8 bahasa pemrograman."
+        },
+        "framework": {
+            "title": "Tumpukan Framework",
+            "desc": "Inilah framework daan Tools yang sudah saya kuasai selama 5 tahun terakhir ini dan semenjak saya mengenal coding di kelas 1 smp, ada sekitar 6 framework."
+        }
+    },
+    "contact": {
+        "title": "Ingin Berdiskusi tentang System Android?",
+        "secondTitle": "Silahkan hubungi saya",
+        "desc": "Saat ini saya berstatus pelajar di SMKN 1 Kota Pasuruan dan Saya memiliki kesibukan di Project Tools system Android dan berbagai macam Project lainnya seperti AxManager Plugin dan KernelSU Manager",
+        "sendEmail": {
+            "title": "Kirim Saya Pesan",
+            "desc": "Kirim pesan ke email saya, saya akan segera merespon pesan yang anda kirim"
+        }
+    }
+}

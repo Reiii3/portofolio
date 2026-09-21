@@ -1,0 +1,57 @@
+{
+    "topPanel": {
+        "contact": "Contact",
+        "language": "Language",
+        "listLink": {
+            "about": "About",
+            "stack": "Stack",
+            "project": "Projects",
+            "contact": "Contact"
+        }
+    },
+    "header": {
+        "tag": "Hi, I'm Riza Maulana",
+        "title": "Building software from interfaces down to the",
+        "scondTitle": "Android system layer.",
+        "desc": "An 11th-grade Software Engineering student who loves shifting from web and mobile to Android root and kernel experiments — learning by building tools that are actually used.",
+        "btn": {
+            "project": "View Projects",
+            "contact": "Contact Me"
+        },
+        "me": {
+            "coding": "Years Coding",
+            "tools": "Languages & tools used",
+            "focus": {
+                "title": "Current focus",
+                "desc": "Android system tooling, Android Apps & web with Next.js"
+            }
+        }
+    },
+    "about": {
+        "tag": "About Me",
+        "title": "I build Android system tools by configuring the system to optimize performance",
+        "desc": {
+            "me": "I am an 11th-grade Software Engineering student working on projects ranging from front-end web development with React and Next.js to Android-side experiments — including modifying the root environment with KernelSU and developing native applications using Kotlin and Jetpack Compose.",
+            "work": "I have learned many programming languages, but the ones I use most frequently are Bash and JavaScript. I use these two languages to create Android App Manager plugins like KernelSU (ROOT Manager) and AxManager (No Root Manager). By utilizing a web app-based interface, I can integrate Bash scripts through the built-in APIs of KernelSU, which are also used in AxManager. This allows users to easily and quickly perform advanced Android system configurations. Other programming languages I have learned include Java, Kotlin, TypeScript, and Python, alongside frameworks such as React, Next.js, Tailwind CSS, Vite, and Jetpack Compose."
+        }
+    },
+    "techStack": {
+        "language": {
+            "title": "Programming Language Stack",
+            "desc": "These are the programming languages I have mastered over the past 5 years since I first learned to code in 7th grade, totaling around 8 programming languages."
+        },
+        "framework": {
+            "title": "Framework Stack",
+            "desc": "These are the frameworks and tools I have mastered over the past 5 years since I first learned to code in 7th grade, totaling around 6 frameworks."
+        }
+    },
+    "contact": {
+        "title": "Want to discuss Android systems?",
+        "secondTitle": "Feel free to reach out to me",
+        "desc": "I am currently a student at SMKN 1 Pasuruan and I am busy with Android system tool projects and various other projects such as AxManager Plugins and KernelSU Manager.",
+        "sendEmail": {
+            "title": "Send Me a Message",
+            "desc": "Send a message to my email, and I will respond to you as soon as possible."
+        }
+    }
+}

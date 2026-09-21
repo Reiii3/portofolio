@@ -1,26 +1,266 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* === Primary (Android 16 Violet/Purple Seed) === */
+  --color-primary: #D0BCFF;
+  --color-on-primary: #381E72;
+  --color-primary-container: #4F378B;
+  --color-on-primary-container: #EADDFF;
+
+  /* === Secondary (Soft Lavender) === */
+  --color-secondary: #CCC2DC;
+  --color-on-secondary: #332D41;
+  --color-secondary-container: #4A4458;
+  --color-on-secondary-container: #E8DEF8;
+
+  /* === Tertiary (Warm Rose Accent) === */
+  --color-tertiary: #EFB8C8;
+  --color-on-tertiary: #492532;
+  --color-tertiary-container: #633B48;
+  --color-on-tertiary-container: #FFD8E4;
+
+  /* === Error === */
+  --color-error: #F2B8B5;
+  --color-on-error: #601410;
+  --color-error-container: #8C1D18;
+  --color-on-error-container: #F9DEDC;
+
+  /* === Success === */
+  --color-success: #A6D3A0;
+  --color-on-success: #133815;
+  --color-success-container: #2A4F2A;
+  --color-on-success-container: #C2EFC0;
+
+  /* === Surface & Background (dipaksa hitam pekat) === */
+  --color-background: #000000;
+  --color-on-background: #E6E0E9;
+
+  --color-surface: #000000;
+  --color-on-surface: #E6E0E9;
+  --color-surface-variant: #49454F;
+  --color-on-surface-variant: #CAC4D0;
+
+  /* === Tonal Surface Layers (MD3 Elevation Standard) === */
+  --color-surface-dim: #000000;
+  --color-surface-bright: #3B383E;
+  --color-surface-container-lowest: #000000;
+  --color-surface-container-low: #1D1B20;
+  --color-surface-container: #211F26;
+  --color-surface-container-high: #2B2930;
+  --color-surface-container-highest: #36343B;
+
+  /* === Outline === */
+  --color-outline: #938F99;
+  --color-outline-variant: #49454F;
+
+  /* === Inverse & Tint === */
+  --color-inverse-surface: #E6E0E9;
+  --color-inverse-on-surface: #313033;
+  --color-inverse-primary: #6750A4;
+  --color-surface-tint: #D0BCFF;
+  --color-scrim: #000000;
+
+  /* === Alias supaya komponen lama (bg-board, text-copper-light, dst) tetap jalan === */
+  --color-board: var(--color-background);
+  --color-board-panel: var(--color-surface-container-low);
+  --color-board-line: var(--color-outline-variant);
+  --color-copper: var(--color-primary);
+  --color-copper-light: var(--color-on-primary-container);
+  --color-copper-dim: var(--color-primary-container);
+  --color-paper: var(--color-on-background);
+  --color-muted: var(--color-on-surface-variant);
+
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+
+  --breakpoint-xs: 23.125rem; /* 370px */
+  --breakpoint-mobile: 28rem; /* 480px */
+  --breakpoint-tablet: 48rem; /* 768px */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.light {
+  /* === Primary === */
+  --color-primary: #6750A4;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #EADDFF;
+  --color-on-primary-container: #21005D;
+
+  /* === Secondary === */
+  --color-secondary: #625B71;
+  --color-on-secondary: #FFFFFF;
+  --color-secondary-container: #E8DEF8;
+  --color-on-secondary-container: #1D192B;
+
+  /* === Tertiary === */
+  --color-tertiary: #7D5260;
+  --color-on-tertiary: #FFFFFF;
+  --color-tertiary-container: #FFD8E4;
+  --color-on-tertiary-container: #31111D;
+
+  /* === Error === */
+  --color-error: #B3261E;
+  --color-on-error: #FFFFFF;
+  --color-error-container: #F9DEDC;
+  --color-on-error-container: #410E0B;
+
+  /* === Success === */
+  --color-success: #3A6B3A;
+  --color-on-success: #FFFFFF;
+  --color-success-container: #C2EFC0;
+  --color-on-success-container: #0A2410;
+
+  /* === Surface & Background === */
+  --color-background: #FFFBFE;
+  --color-on-background: #1C1B1F;
+
+  --color-surface: #FFFBFE;
+  --color-on-surface: #1C1B1F;
+  --color-surface-variant: #E7E0EC;
+  --color-on-surface-variant: #49454F;
+
+  /* === Tonal Surface Layers === */
+  --color-surface-dim: #DED8E1;
+  --color-surface-bright: #FFFBFE;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F7F2FA;
+  --color-surface-container: #F1ECF4;
+  --color-surface-container-high: #ECE6F0;
+  --color-surface-container-highest: #E6E0E9;
+
+  /* === Outline === */
+  --color-outline: #79747E;
+  --color-outline-variant: #CAC4D0;
+
+  /* === Inverse & Tint === */
+  --color-inverse-surface: #313033;
+  --color-inverse-on-surface: #F4EFF4;
+  --color-inverse-primary: #D0BCFF;
+  --color-surface-tint: #6750A4;
+  --color-scrim: #000000;
+
+  /* === Alias === */
+  --color-board: var(--color-background);
+  --color-board-panel: var(--color-surface-container-low);
+  --color-board-line: var(--color-outline-variant);
+  --color-copper: var(--color-primary);
+  --color-copper-light: var(--color-on-primary-container);
+  --color-copper-dim: var(--color-primary-container);
+  --color-paper: var(--color-on-background);
+  --color-muted: var(--color-on-surface-variant);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* === Cut All Corners === */
+@utility clip-cut-sm { clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px); }
+@utility clip-cut-md { clip-path: polygon(16px 0%, calc(100% - 16px) 0%, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0% calc(100% - 16px), 0% 16px); }
+@utility clip-cut-lg { clip-path: polygon(24px 0%, calc(100% - 24px) 0%, 100% 24px, 100% calc(100% - 24px), calc(100% - 24px) 100%, 24px 100%, 0% calc(100% - 24px), 0% 24px); }
+@utility clip-cut-xl { clip-path: polygon(32px 0%, calc(100% - 32px) 0%, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0% calc(100% - 32px), 0% 32px); }
+
+/* === Cut Top Only === */
+@utility clip-cut-t-sm { clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, 0% 100%, 0% 8px); }
+@utility clip-cut-t-md { clip-path: polygon(16px 0%, calc(100% - 16px) 0%, 100% 16px, 100% 100%, 0% 100%, 0% 16px); }
+@utility clip-cut-t-lg { clip-path: polygon(24px 0%, calc(100% - 24px) 0%, 100% 24px, 100% 100%, 0% 100%, 0% 24px); }
+@utility clip-cut-t-xl { clip-path: polygon(32px 0%, calc(100% - 32px) 0%, 100% 32px, 100% 100%, 0% 100%, 0% 32px); }
+
+/* === Cut Bottom Only === */
+@utility clip-cut-b-sm { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px)); }
+@utility clip-cut-b-md { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0% calc(100% - 16px)); }
+@utility clip-cut-b-lg { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 24px), calc(100% - 24px) 100%, 24px 100%, 0% calc(100% - 24px)); }
+@utility clip-cut-b-xl { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 32px), calc(100% - 32px) 100%, 32px 100%, 0% calc(100% - 32px)); }
+
+/* === Cut Left Only === */
+@utility clip-cut-l-sm { clip-path: polygon(8px 0%, 100% 0%, 100% 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px); }
+@utility clip-cut-l-md { clip-path: polygon(16px 0%, 100% 0%, 100% 100%, 16px 100%, 0% calc(100% - 16px), 0% 16px); }
+@utility clip-cut-l-lg { clip-path: polygon(24px 0%, 100% 0%, 100% 100%, 24px 100%, 0% calc(100% - 24px), 0% 24px); }
+@utility clip-cut-l-xl { clip-path: polygon(32px 0%, 100% 0%, 100% 100%, 32px 100%, 0% calc(100% - 32px), 0% 32px); }
+
+/* === Cut Right Only === */
+@utility clip-cut-r-sm { clip-path: polygon(0% 0%, calc(100% - 8px) 0%, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%); }
+@utility clip-cut-r-md { clip-path: polygon(0% 0%, calc(100% - 16px) 0%, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0% 100%); }
+@utility clip-cut-r-lg { clip-path: polygon(0% 0%, calc(100% - 24px) 0%, 100% 24px, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0% 100%); }
+@utility clip-cut-r-xl { clip-path: polygon(0% 0%, calc(100% - 32px) 0%, 100% 32px, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0% 100%); }
+
+/* === Cut Top-Left Only === */
+@utility clip-cut-tl-sm { clip-path: polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px); }
+@utility clip-cut-tl-md { clip-path: polygon(16px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 16px); }
+@utility clip-cut-tl-lg { clip-path: polygon(24px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 24px); }
+@utility clip-cut-tl-xl { clip-path: polygon(32px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 32px); }
+
+/* === Cut Top-Right Only === */
+@utility clip-cut-tr-sm { clip-path: polygon(0% 0%, calc(100% - 8px) 0%, 100% 8px, 100% 100%, 0% 100%); }
+@utility clip-cut-tr-md { clip-path: polygon(0% 0%, calc(100% - 16px) 0%, 100% 16px, 100% 100%, 0% 100%); }
+@utility clip-cut-tr-lg { clip-path: polygon(0% 0%, calc(100% - 24px) 0%, 100% 24px, 100% 100%, 0% 100%); }
+@utility clip-cut-tr-xl { clip-path: polygon(0% 0%, calc(100% - 32px) 0%, 100% 32px, 100% 100%, 0% 100%); }
+
+/* === Cut Bottom-Left Only === */
+@utility clip-cut-bl-sm { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 8px 100%, 0% calc(100% - 8px)); }
+@utility clip-cut-bl-md { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 16px 100%, 0% calc(100% - 16px)); }
+@utility clip-cut-bl-lg { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 24px 100%, 0% calc(100% - 24px)); }
+@utility clip-cut-bl-xl { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 32px 100%, 0% calc(100% - 32px)); }
+
+/* === Cut Bottom-Right Only === */
+@utility clip-cut-br-sm { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%); }
+@utility clip-cut-br-md { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0% 100%); }
+@utility clip-cut-br-lg { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0% 100%); }
+@utility clip-cut-br-xl { clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0% 100%); }
+
+/* CUSTOM VALUE */
+@utility clip-cut-* {
+  --cut: --value([length]);
+  clip-path: polygon(
+    var(--cut) 0%,
+    calc(100% - var(--cut)) 0%,
+    100% var(--cut),
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    var(--cut) 100%,
+    0% calc(100% - var(--cut)),
+    0% var(--cut)
+  );
+}
+
+* {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.trace-grid {
+  background-image:
+    linear-gradient(90deg, rgba(208, 188, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(208, 188, 255, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 32s linear infinite;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
