@@ -29,7 +29,7 @@ export function LangSwitcherDesktop() {
     <div className="relative hidden tablet:block" ref={ref}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 bg-surface-hover hover:bg-surface p-2 rounded-full border border-border transition duration-200 cursor-pointer"
+        className="flex items-center gap-2 bg-on-secondary hover:bg-secondary-container p-2 rounded-full transition duration-200 cursor-pointer"
       >
         <MdLanguage size={16} className="text-text-secondary" />
         <ReactCountryFlag
@@ -40,7 +40,7 @@ export function LangSwitcherDesktop() {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-surface border border-border rounded-2xl p-2 shadow-lg shadow-black/30 z-50">
+        <div className="absolute right-0 mt-2 w-40 bg-on-secondary rounded-2xl p-2 shadow-lg shadow-black/30 z-50">
           {languages.map((lang) => (
             <button
               key={lang.code}

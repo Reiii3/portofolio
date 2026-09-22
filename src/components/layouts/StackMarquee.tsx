@@ -14,6 +14,7 @@ const stack = [
   "Next.js",
   "KernelSU",
   "Android",
+  "Firebase"
 ];
 
 export default function StackMarquee() {

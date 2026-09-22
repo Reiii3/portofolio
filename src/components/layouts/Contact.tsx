@@ -20,10 +20,10 @@ export default function Contact() {
                         <h1 className="text-2xl font-bold">{t("contact.sendEmail.title")}</h1>
                         <p className="text-muted/80">{t("contact.sendEmail.desc")}</p>
                     </div>
-                    <a href="mailto:riza.maulana.com" target="_blank" className="bg-surface-container-highest hover:bg-surface-container-highest/60 transition-all ease-in-out duration-300 rounded-lg p-5 flex items-center justify-between gap-2">
+                    <a href="mailto:rizamaulanaa3@gmail.com" target="_blank" className="bg-surface-container-highest hover:bg-surface-container-highest/60 transition-all ease-in-out duration-300 rounded-lg p-5 flex items-center justify-between gap-2">
                         <div className="flex items-center gap-2.5">
                             <BsMailbox size={24} className=""/>
-                            <p className="text-muted/80">riza.maulana.com</p>
+                            <p className="text-muted/80">rizamaulanaa3@gmail.com</p>
                         </div>
                         <HiArrowTopRightOnSquare size={24} className="text-muted/80"/>
                     </a>

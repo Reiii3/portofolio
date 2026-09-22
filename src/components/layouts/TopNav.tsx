@@ -59,7 +59,7 @@ export default function Nav() {
                 </ul>
                 <a
                     href="#kontak"
-                    className="rounded-sm border hidden md:block border-copper-dim px-4 py-2 font-mono text-xs text-copper-light transition-colors hover:border-copper hover:bg-copper/10"
+                    className="rounded-sm hidden bg-primary md:block px-4 py-2 font-mono text-xs text-board transition-colors hover:text-paper hover:bg-primary-container"
                 >
                     Hubungi
                 </a>

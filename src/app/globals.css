@@ -76,6 +76,7 @@
   --breakpoint-xs: 23.125rem; /* 370px */
   --breakpoint-mobile: 28rem; /* 480px */
   --breakpoint-tablet: 48rem; /* 768px */
+  --animate-float: float 3s ease-in-out infinite;
 }
 
 .light {
@@ -217,6 +218,15 @@
     0% var(--cut)
   );
 }
+
+@keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px); /* Atur seberapa tinggi naiknya di sini */
+    }
+  }
 
 * {
   scroll-behavior: smooth;

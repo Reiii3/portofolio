@@ -69,8 +69,21 @@ export default function Hero() {
                             alt="Riza Maulana" 
                             width={500} 
                             height={500} 
-                            className="hidden group-hover:-rotate-3 group-hover:brightness-100 group-hover:saturate-100 brightness-50 saturate-50 transition-all ease-in-out duration-300 absolute -top-3 -left-3 tablet:block rounded-3xl object-cover shrink-0 w-75 h-75 lg:w-100 lg:h-100" 
+                            className="group-hover:-rotate-3 group-hover:brightness-100 group-hover:saturate-100 brightness-50 saturate-50 transition-all ease-in-out duration-300 absolute -top-3 -left-3 rounded-3xl object-cover shrink-0 w-75 h-75 lg:w-100 lg:h-100" 
                         />
+                        <div className="absolute -top-10 -right-5 group-hover:-translate-y-5 group-hover:rotate-2 group-hover:-translate-x-5 animate-float transition-all ease-in-out duration-300 bg-secondary-container/70 p-4 rounded-xl">
+                            <p className="text-[12px] lg:text-sm text-muted/80 font-mono">Haii</p>
+                            <h1 className="text-sm lg:text-md font-semibold">My Name Is Riza Maulana</h1>
+                        </div>
+                        <div className="absolute top-20 -left-15 group-hover:-translate-x-10 group-hover:-rotate-8 animate-float bg-secondary-container/70 p-4 rounded-xl transition-all ease-in-out duration-300">
+                            <h1 className="text-sm lg:text-md font-semibold">AxManager Society</h1>
+                        </div>
+                        <div className="absolute top-40 -right-3 group-hover:translate-y-10 group-hover:-rotate-12 animate-float bg-secondary-container/70 p-4 rounded-xl transition-all ease-in-out duration-300">
+                            <h1 className="text-sm lg:text-md font-semibold">Vortex Association</h1>
+                        </div>
+                        <div className="absolute top-58 -left-12 group-hover:-translate-x-5 group-hover:rotate-5 animate-float bg-secondary-container/70 p-4 rounded-xl transition-all ease-in-out duration-300">
+                            <h1 className="text-sm lg:text-md font-semibold">Shell Farm</h1>
+                        </div>
                     </div>
                     <h1 className="text-xl text-center font-bold leading-[1.05] text-paper md:text-2xl max-w-100">``If Your Operating System Sucks, Then Make It Better``</h1>
                 </div>
