@@ -1,7 +1,9 @@
 "use client"
 
 import Image from "next/image";
+import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { FaGithub, FaTelegram, FaWhatsapp } from "react-icons/fa";
 
 const listTag = [
     "Android Tools Developer",
@@ -58,6 +60,17 @@ export default function Hero() {
                             <p className="mt-1 text-sm text-muted">
                                 {t("header.me.focus.desc")}
                             </p>
+                        </div>
+                        <div className="flex items-center gap-3">
+                            <Link href={'https://github.com/Reiii3'} target="_blank">
+                                <FaGithub className="size-6.5 md:size-7.5 cursor-pointer"/>
+                            </Link>
+                            <Link href={'https://t.me/JaaGabu'} target="_blank">
+                                <FaTelegram className="size-6.5 md:size-7.5 cursor-pointer"/>
+                            </Link>
+                            <Link href={'https://whatsapp.com/channel/0029Vb6RzcU5vKA4XgE27B1L'} target="_blank">
+                                <FaWhatsapp className="size-6.5 md:size-7.5 cursor-pointer"/>
+                            </Link>
                         </div>
                     </div>
                 </div>
