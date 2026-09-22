@@ -36,6 +36,8 @@
         }
     },
     "techStack": {
+        "title": "Berbagai Proyekku",
+        "desc": "Koleksi dari semua proyek perangkat lunak, alat, dan berbagai proyek yang pernah saya kerjakan selama saya menjadi pengembang perangkat lunak",
         "language": {
             "title": "Tumpukan Bahasa Pemrograman",
             "desc": "Inilah bahasa pemrograman yang sudah saya kuasai selama 5 tahun terakhir ini dan semenjak saya mengenal coding di kelas 1 smp, ada sekitar 8 bahasa pemrograman."

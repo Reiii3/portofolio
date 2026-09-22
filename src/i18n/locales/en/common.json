@@ -36,6 +36,8 @@
         }
     },
     "techStack": {
+        "title": "My Projects",
+        "desc": "A collection of all the software projects, tools, and various projects I have worked on during my time as a software developer.",
         "language": {
             "title": "Programming Language Stack",
             "desc": "These are the programming languages I have mastered over the past 5 years since I first learned to code in 7th grade, totaling around 8 programming languages."
