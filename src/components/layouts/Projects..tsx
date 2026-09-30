@@ -1,13 +1,12 @@
 "use client"
 import Image from "next/image";
 import { StaticImageData } from "next/image";
-import AxVision from "../../img/axvision_hawk.webp";
-import RedCorner from "../../img/red_corner_project.webp";
-import AxManager from "../../img/axmanager_society.webp"
 import { FaGithub } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
 
 interface Project {
+    id: number;
     title: string;
     category: string;
     description: string;
@@ -20,31 +19,44 @@ interface Project {
 
 const projects: Project[] = [
     {
+        id: 1,
         title: "Project AxVision",
         category: "TOOLS",
         description:
             "Tools Android system optimizer yang saya kembangkan sendiri sebagai solo developer. Mengoptimalkan performa sistem Android yang dikenal berat dan boros RAM, terutama di perangkat Xiaomi/POCO/Redmi/Infinix/TECNO.",
-        image: AxVision,
+        image: "/img/axvision_hawk.webp",
         tags: ["Bash", "JavaScript", "Android", "Root", "KernelSU", "AxManager", "KernelSU API", "Vite.js", "React"],
         customLink: "https://www.magiskmodule.com/axvision",
     },
     {
+        id: 2,
         title: "Website Game Corner",
         category: "WEB",
         description:
             "Project perdana saya yang merangkum semua skill yang sudah dipelajari. Website untuk aplikasi di Play Store milik teman/guru yang jadi salah satu orang pertama yang mengajarkan saya coding.",
-        image: RedCorner,
+        image: "/img/red_corner_project.webp",
         tags: ["React", "JavaScript", "Vite.js", "Tailwind CSS", "Play Store Scraper API", "Firebase"],
         liveUrl: "https://debug.game-corner.pages.dev/",
     },
     {
+        id: 3,
         title: "Website AxManager Society",
         category: "WEB",
         description:
             "Dikembangkan dari tugas sekolah Pak Tri Gunawan. AxManager adalah tools Android untuk modifikasi ringan (non-root) maupun berat (root). Saya jadi salah satu plugin developer di aplikasi ini (5 plugin, 3 di antaranya sudah tidak mendapat update). Website ini mengenalkan AxManager ke pengguna baru dan komunitas.",
-        image: AxManager,
+        image: "/img/axmanager_society.webp",
         tags: ["React", "JavaScript", "Vite.js", "Tailwind CSS", "Play Store Scraper API", "Firebase"],
         liveUrl: "https://debug.game-corner.pages.dev/",
+    },
+    {
+        id: 4,
+        title: "Project Qiunix",
+        category: "TOOLS",
+        description:
+            "Tools Android system optimizer yang saya kembangkan sendiri sebagai solo developer. Mengoptimalkan performa sistem Android yang dikenal berat dan boros RAM, terutama di perangkat Xiaomi/POCO/Redmi/Infinix/TECNO.",
+        image: "/img/qiunix_apollo.webp",
+        tags: ["Bash", "JavaScript", "Android", "Root", "KernelSU", "AxManager", "KernelSU API", "Vite.js", "React"],
+        customLink: "https://www.magiskmodule.com/axvision",
     },
 ];
 
@@ -128,10 +140,13 @@ function ProjectCard({ project }: { project: Project }) {
                         </span>
                     ))}
                 </div>
-                <div className="flex gap-3 mt-1">
+                <div className="flex items-center gap-3 mt-1">
                     {githubLink}
                     {liveLink}
                     {customLink}
+                    <Link href={`/projects/${project.id}`} className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full">
+                        <p>Detail</p>
+                    </Link>
                 </div>
             </div>
         </div>

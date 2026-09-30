@@ -26,10 +26,10 @@ export default function Nav() {
     }, []);
 
     const links: NavLink[] = [
-        { href: "#tentang", label: t("topPanel.listLink.about"), icon: MdLayers },
-        { href: "#stack", label: t("topPanel.listLink.stack"), icon: MdInfo },
-        { href: "#proyek", label: t("topPanel.listLink.project"), icon: IoMdBriefcase },
-        { href: "#kontak", label: t("topPanel.listLink.contact"), icon: MdMail },
+        { href: "/#tentang", label: t("topPanel.listLink.about"), icon: MdLayers },
+        { href: "/#stack", label: t("topPanel.listLink.stack"), icon: MdInfo },
+        { href: "/#proyek", label: t("topPanel.listLink.project"), icon: IoMdBriefcase },
+        { href: "/#kontak", label: t("topPanel.listLink.contact"), icon: MdMail },
     ];
 
     return (

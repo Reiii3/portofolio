@@ -5,14 +5,14 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { FaGithub, FaTelegram, FaWhatsapp } from "react-icons/fa";
 
-const listTag = [
-    "Android Tools Developer",
-    "Web Developer",
-    "AxManager Society",
-    "KernelSU Community",
-    "AOSP Community",
-]
-
+// const listTag = [
+//     "Android Tools Developer",
+//     "Web Developer",
+//     "AxManager Society",
+//     "KernelSU Community",
+//     "AOSP Community",
+// ]
+   
 export default function Hero() {
     const {t} = useTranslation()
     return (

@@ -6,7 +6,7 @@ import Projects from "@/components/layouts/Projects.";
 import StackMarquee from "@/components/layouts/StackMarquee";
 import TechStack from "@/components/layouts/TechStack";
 
-export default function Home() {
+export default function Container() {
   return (
     <div>
       <Hero />

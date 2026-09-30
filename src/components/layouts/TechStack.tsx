@@ -1,48 +1,32 @@
 "use client"
 import Image from "next/image";
-import type { StaticImageData } from "next/image";
-
-import Kotlin from "../../img/kotlin-svgrepo-com.svg";
-import Bash from "../../img/bash-icon-svgrepo-com.svg";
-import Python from "../../img/python-svgrepo-com.svg";
-import Java from "../../img/java-svgrepo-com.svg";
-import ReactIcon from "../../img/react-svgrepo-com.svg";
-import Js from "../../img/js-official-svgrepo-com.svg";
-import Ts from "../../img/typescript-icon-svgrepo-com.svg";
-import Tailwind from "../../img/tailwind-svgrepo-com.svg";
-import Jetpack from "../../img/android-color-svgrepo-com.svg";
-import Vite from "../../img/vite-svgrepo-com.svg";
-import Next from "../../img/next-dot-js-svgrepo-com.svg";
-import KernelSU from "../../img/kernelsu.png";
-import Git from "../../img/git-svgrepo-com.svg";
-import Github from "../../img/github-142-svgrepo-com.svg";
 import { useTranslation } from "react-i18next";
 
 interface CardProps {
     label: string;
-    icon: StaticImageData; // ganti dari ComponentType
+    icon: string; // ganti dari ComponentType
 }
 
 export default function TechStack() {
     const {t} = useTranslation()
     const listStackLanguage: CardProps[] = [
-        { label: "Kotlin", icon: Kotlin },
-        { label: "Bash", icon: Bash },
-        { label: "Python", icon: Python },
-        { label: "Java", icon: Java },
-        { label: "React", icon: ReactIcon },
-        { label: "JavaScript", icon: Js },
-        { label: "TypeScript", icon: Ts },
-        { label: "Tailwind", icon: Tailwind },
+        { label: "Kotlin", icon: "/img/kotlin-svgrepo-com.svg" },
+        { label: "Bash", icon: "/img/bash-icon-svgrepo-com.svg" },
+        { label: "Python", icon: "/img/python-svgrepo-com.svg" },
+        { label: "Java", icon: "/img/java-svgrepo-com.svg" },
+        { label: "React", icon: "/img/react-svgrepo-com.svg" },
+        { label: "JavaScript", icon: "/img/js-official-svgrepo-com.svg" },
+        { label: "TypeScript", icon: "/img/typescript-icon-svgrepo-com.svg" },
+        { label: "Tailwind", icon: "/img/tailwind-svgrepo-com.svg" },
     ];
 
     const listStackFramework: CardProps[] = [
-        { label: "Jetpack Compose", icon: Jetpack },
-        { label: "Vite", icon: Vite },
-        { label: "Next.js", icon: Next },
-        { label: "KernelSU", icon: KernelSU },
-        { label: "Git", icon: Git },
-        { label: "Github", icon: Github },
+        { label: "Jetpack Compose", icon: "/img/android-color-svgrepo-com.svg" },
+        { label: "Vite", icon: "/img/vite-svgrepo-com.svg" },
+        { label: "Next.js", icon: "/img/next-dot-js-svgrepo-com.svg" },
+        { label: "KernelSU", icon: "/img/kernelsu.png" },
+        { label: "Git", icon: "/img/git-svgrepo-com.svg" },
+        { label: "Github", icon: "/img/github-142-svgrepo-com.svg" },
     ];
 
     return (
@@ -80,10 +64,16 @@ export default function TechStack() {
     );
 }
 
-function Card({ label, icon: Icon }: CardProps) {
+function Card({ label, icon }: CardProps) {
     return (
         <div className="bg-white/20 backdrop-blur-2xl hover:-translate-y-1 transition-all ease-in-out duration-300 flex flex-col items-center gap-1 p-4 px-6 rounded-xl">
-            <Image src={Icon} className="size-10" alt={label} />
+            <Image
+                src={icon}
+                alt={label}
+                width={40}
+                height={40}
+                className="size-10 object-contain"
+            />
             <p>{label}</p>
         </div>
     );
