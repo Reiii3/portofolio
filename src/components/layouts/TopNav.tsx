@@ -44,7 +44,7 @@ export default function Nav() {
                 <a href="#" className="font-mono text-xl tracking-tight text-copper-light">
                     Jaa<span className="text-paper">.dev</span>
                 </a>
-                <ul className="hidden gap-8 font-mono text-sm text-muted md:flex items-center">
+                <ul className="hidden gap-8 font-semibold text-sm text-muted md:flex items-center">
                     <LangSwitcherDesktop />
                     {links.map((link) => (
                         <li key={link.href}>
