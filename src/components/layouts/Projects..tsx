@@ -56,7 +56,7 @@ const projects: Project[] = [
             "Tools Android system optimizer yang saya kembangkan sendiri sebagai solo developer. Mengoptimalkan performa sistem Android yang dikenal berat dan boros RAM, terutama di perangkat Xiaomi/POCO/Redmi/Infinix/TECNO.",
         image: "/img/qiunix_apollo.webp",
         tags: ["Bash", "JavaScript", "Android", "Root", "KernelSU", "AxManager", "KernelSU API", "Vite.js", "React"],
-        customLink: "https://www.magiskmodule.com/axvision",
+        customLink: "https://www.magiskmodule.com/qiunix-apollo",
     },
 ];
 

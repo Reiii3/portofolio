@@ -33,9 +33,17 @@ export const dataProject: ProjectData[] = [
         id: 3,
         name: "Website AxManager Society",
         image: "/img/axmanager_society.webp",
-        gitLink: "https://debug.game-corner.pages.dev/",
         desc: "Dikembangkan dari tugas sekolah Pak Tri Gunawan. AxManager adalah tools Android untuk modifikasi ringan (non-root) maupun berat (root). Saya jadi salah satu plugin developer di aplikasi ini (5 plugin, 3 di antaranya sudah tidak mendapat update). Website ini mengenalkan AxManager ke pengguna baru dan komunitas.",
         category: ["WEB"],
         tech: ["React", "JavaScript", "Vite.js", "Tailwind CSS", "Play Store Scraper API", "Firebase"],
+    },
+    {
+        id: 4,
+        name: "Project Qiunix Apollo",
+        image: "/img/qiunix_apollo.webp",
+        link: "https://www.magiskmodule.com/qiunix-apollo",
+        desc: "Tools Android system optimizer yang saya kembangkan sendiri sebagai solo developer. Mengoptimalkan performa sistem Android yang dikenal berat dan boros RAM, terutama di perangkat Xiaomi/POCO/Redmi/Infinix/TECNO.",
+        category: ["TOOLS"],
+        tech: ["Bash", "JavaScript", "Android", "Root", "KernelSU", "AxManager", "KernelSU API", "Vite.js", "React"],
     },
 ]
