@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { FaGithub, FaTelegram, FaWhatsapp } from "react-icons/fa";
+import TraceGridBackground from "../TraceGrid";
 
 // const listTag = [
 //     "Android Tools Developer",
@@ -16,7 +17,8 @@ import { FaGithub, FaTelegram, FaWhatsapp } from "react-icons/fa";
 export default function Hero() {
     const {t} = useTranslation()
     return (
-        <section className="trace-grid relative overflow-hidden border-b border-board-line/70">
+        <section className="relative isolate overflow-hidden border-b border-board-line/70">
+            <TraceGridBackground />
             <div className="mx-auto flex max-w-6xl gap-10 px-6 py-20 flex-col md:flex-row items-center justify-between">
                 <div>
                     <p className="mb-5 font-mono text-sm text-copper-light">
@@ -44,19 +46,19 @@ export default function Hero() {
                     
                     <div className="mt-10 flex flex-col justify-between gap-6 border-t border-board-line pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
                         <div>
-                            <p className="font-semibold text-4xl text-copper-light">05</p>
+                            <p className="font-gfbold text-6xl text-copper-light">05</p>
                             <p className="mt-1 font-mono text-xs uppercase tracking-wide text-muted">
                                 {t("header.me.coding")}
                             </p>
                         </div>
                         <div>
-                            <p className="font-semibold text-4xl text-copper-light">14</p>
+                            <p className="font-gfbold text-6xl text-copper-light">14</p>
                             <p className="mt-1 font-mono text-xs uppercase tracking-wide text-muted">
                                 {t("header.me.tools")}
                             </p>
                         </div>
                         <div>
-                            <p className="font-semibold text-[17px] text-paper">{t("header.me.focus.title")}</p>
+                            <p className="font-gfbold text-xl text-paper">{t("header.me.focus.title")}</p>
                             <p className="mt-1 text-sm text-muted">
                                 {t("header.me.focus.desc")}
                             </p>

@@ -1,22 +1,67 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { dataProject } from "../data/dataProject";
+// import { dataProject } from "../data/dataProject";
+import { StaticImageData } from "next/image";
 import Image from "next/image";
 import { FaGithub } from "react-icons/fa";
+import { supabase } from "@/lib/supabase";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import LoadingScreen from "@/components/LoadingScreen";
+
+interface Project {
+    id: number;
+    name: string;
+    category: string;
+    description: string;
+    image: StaticImageData | string;
+    tech: string[];
+    demo_link?: string;
+    githubLink?: string;
+    link?: string;
+}
 
 export default function ProjectDetail() {
     const { id } = useParams<{ id: string }>();
+    const [dataProject, setDataProject] = useState<Project[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [labelStatus, setLabelStatus] = useState('');
     const project = dataProject.find((item) => item.id === Number(id));
+
+    useEffect(() => {
+        async function load() {
+            try {
+                setIsLoading(true)
+                setLabelStatus('Initializing data projects...')
+                const { data } = await supabase.from('projects').select('*');
+                setDataProject(data ?? [])
+                setLabelStatus('Loading data projects...')
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setInterval(() => {
+                    setLabelStatus('Initializing data projects Successfully')
+                    setInterval(() => {
+                        setIsLoading(false)
+                    }, 1300);
+                }, 1300);
+            }
+        }
+        load()
+    }, [])
+    
+    if (isLoading) {
+        return <LoadingScreen label={labelStatus}/>
+    }
 
     if (!project) {
         return <ProjectNotFound/>;
     }
 
-    const githubLink = project.gitLink ? (
+    const githubLink = project.githubLink ? (
         <a
-            href={project.gitLink}
+            href={project.githubLink}
             target="_blank"
             rel="noopener noreferrer"
             className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
@@ -25,9 +70,9 @@ export default function ProjectDetail() {
         </a>
     ) : null;
 
-    const liveLink = project.demoLink ? (
+    const liveLink = project.demo_link ? (
         <a
-            href={project.demoLink}
+            href={project.demo_link}
             target="_blank"
             rel="noopener noreferrer"
             className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
@@ -56,7 +101,7 @@ export default function ProjectDetail() {
                         <div className="relative overflow-hidden rounded-xl w-full h-70 tablet:h-80 lg:h-90">
                             <Image
                                 src={project.image}
-                                alt={project.name}
+                                alt={project.name ?? "Project Image"}
                                 fill
                                 className="object-cover scale-105 group-hover:brightness-50 group-hover:scale-110 transition-all duration-300"
                             />
@@ -72,7 +117,7 @@ export default function ProjectDetail() {
                 <div className="flex flex-col gap-3">
                     <div className="w-full flex flex-col gap-2 bg-surface-container rounded-2xl p-6">
                         <h1 className="text-2xl font-bold">Tentang Project</h1>
-                        <p className="text-muted/80">{project.desc}</p>
+                        <p className="text-muted/80">{project.description}</p>
                         <div className="flex flex-wrap gap-1.5">
                             {project.tech.map((tag) => (
                                 <span key={tag} className="text-xs w-fit px-2 py-0.5 rounded-full bg-white/10">

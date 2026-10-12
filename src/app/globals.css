@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  /* === Primary (Android 16 Violet/Purple Seed) === */
+  /* === Primary (Violet) === */
   --color-primary: #D0BCFF;
   --color-on-primary: #381E72;
-  --color-primary-container: #4F378B;
+  --color-primary-container: #5B3FA6;
   --color-on-primary-container: #EADDFF;
 
-  /* === Secondary (Soft Lavender) === */
-  --color-secondary: #CCC2DC;
-  --color-on-secondary: #332D41;
-  --color-secondary-container: #4A4458;
-  --color-on-secondary-container: #E8DEF8;
+  /* === Secondary (Lavender-Blue) === */
+  --color-secondary: #B8C4FF;
+  --color-on-secondary: #1E2B66;
+  --color-secondary-container: #3A4580;
+  --color-on-secondary-container: #DDE1FF;
 
-  /* === Tertiary (Warm Rose Accent) === */
-  --color-tertiary: #EFB8C8;
-  --color-on-tertiary: #492532;
-  --color-tertiary-container: #633B48;
-  --color-on-tertiary-container: #FFD8E4;
+  /* === Tertiary (Rose) === */
+  --color-tertiary: #FFB1C8;
+  --color-on-tertiary: #541D33;
+  --color-tertiary-container: #7A3550;
+  --color-on-tertiary-container: #FFD9E3;
 
   /* === Error === */
   --color-error: #F2B8B5;
@@ -31,36 +31,36 @@
   --color-success-container: #2A4F2A;
   --color-on-success-container: #C2EFC0;
 
-  /* === Surface & Background (dipaksa hitam pekat) === */
-  --color-background: #000000;
-  --color-on-background: #E6E0E9;
+  /* === Surface & Background (gelap keunguan, bukan hitam) === */
+  --color-background: #141022;
+  --color-on-background: #E8E0F5;
 
-  --color-surface: #000000;
-  --color-on-surface: #E6E0E9;
-  --color-surface-variant: #49454F;
-  --color-on-surface-variant: #CAC4D0;
+  --color-surface: #141022;
+  --color-on-surface: #E8E0F5;
+  --color-surface-variant: #4A4458;
+  --color-on-surface-variant: #CBC3DA;
 
-  /* === Tonal Surface Layers (MD3 Elevation Standard) === */
-  --color-surface-dim: #000000;
-  --color-surface-bright: #3B383E;
-  --color-surface-container-lowest: #000000;
-  --color-surface-container-low: #1D1B20;
-  --color-surface-container: #211F26;
-  --color-surface-container-high: #2B2930;
-  --color-surface-container-highest: #36343B;
+  /* === Tonal Surface Layers === */
+  --color-surface-dim: #100C1C;
+  --color-surface-bright: #3A3450;
+  --color-surface-container-lowest: #0E0A19;
+  --color-surface-container-low: #1C172B;
+  --color-surface-container: #221C33;
+  --color-surface-container-high: #2D2740;
+  --color-surface-container-highest: #38324B;
 
   /* === Outline === */
-  --color-outline: #938F99;
-  --color-outline-variant: #49454F;
+  --color-outline: #968EA8;
+  --color-outline-variant: #4A4458;
 
   /* === Inverse & Tint === */
-  --color-inverse-surface: #E6E0E9;
-  --color-inverse-on-surface: #313033;
+  --color-inverse-surface: #E8E0F5;
+  --color-inverse-on-surface: #322F3A;
   --color-inverse-primary: #6750A4;
   --color-surface-tint: #D0BCFF;
   --color-scrim: #000000;
 
-  /* === Alias supaya komponen lama (bg-board, text-copper-light, dst) tetap jalan === */
+  /* === Alias komponen lama === */
   --color-board: var(--color-background);
   --color-board-panel: var(--color-surface-container-low);
   --color-board-line: var(--color-outline-variant);
@@ -70,12 +70,14 @@
   --color-paper: var(--color-on-background);
   --color-muted: var(--color-on-surface-variant);
 
-  --font-display: var(--font-display);
-  --font-mono: var(--font-mono);
+  --font-display: "Your Display Font", system-ui, sans-serif;
+  --font-mono: "Your Mono Font", ui-monospace, monospace;
 
-  --breakpoint-xs: 23.125rem; /* 370px */
-  --breakpoint-mobile: 28rem; /* 480px */
-  --breakpoint-tablet: 48rem; /* 768px */
+  --font-gfbold: 'GFBold',  sans-serif;
+  --font-gflight: 'GFLight', sans-serif;
+  --breakpoint-xs: 23.125rem;
+  --breakpoint-mobile: 28rem;
+  --breakpoint-tablet: 48rem;
   --animate-float: float 3s ease-in-out infinite;
 }
 
@@ -148,6 +150,16 @@
   --color-copper-dim: var(--color-primary-container);
   --color-paper: var(--color-on-background);
   --color-muted: var(--color-on-surface-variant);
+}
+
+@font-face {
+  font-family: 'GFLight';
+  src: url('../fonts/gflight.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'GFBold';
+  src: url('../fonts/gfbold.ttf') format('truetype');
 }
 
 /* === Cut All Corners === */

@@ -41,7 +41,7 @@ export default function Nav() {
             }`}
         >
             <nav className="relative z-30 mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10">
-                <a href="#" className="font-mono text-xl tracking-tight text-copper-light">
+                <a href="#" className="font-gfbold text-2xl tracking-tight text-copper-light">
                     Jaa<span className="text-paper">.dev</span>
                 </a>
                 <ul className="hidden gap-8 font-semibold text-sm text-muted md:flex items-center">

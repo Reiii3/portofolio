@@ -3,65 +3,85 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { FaGithub } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import { supabase } from "@/lib/supabase"
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface Project {
     id: number;
-    title: string;
+    name: string;
     category: string;
     description: string;
     image: StaticImageData | string;
-    tags: string[];
-    liveUrl?: string;
-    githubUrl?: string;
-    customLink?: string;
+    tech: string[];
+    demo_link?: string;
+    githubLink?: string;
+    link?: string;
 }
 
-const projects: Project[] = [
-    {
-        id: 1,
-        title: "Project AxVision",
-        category: "TOOLS",
-        description:
-            "Tools Android system optimizer yang saya kembangkan sendiri sebagai solo developer. Mengoptimalkan performa sistem Android yang dikenal berat dan boros RAM, terutama di perangkat Xiaomi/POCO/Redmi/Infinix/TECNO.",
-        image: "/img/axvision_hawk.webp",
-        tags: ["Bash", "JavaScript", "Android", "Root", "KernelSU", "AxManager", "KernelSU API", "Vite.js", "React"],
-        customLink: "https://www.magiskmodule.com/axvision",
-    },
-    {
-        id: 2,
-        title: "Website Game Corner",
-        category: "WEB",
-        description:
-            "Project perdana saya yang merangkum semua skill yang sudah dipelajari. Website untuk aplikasi di Play Store milik teman/guru yang jadi salah satu orang pertama yang mengajarkan saya coding.",
-        image: "/img/red_corner_project.webp",
-        tags: ["React", "JavaScript", "Vite.js", "Tailwind CSS", "Play Store Scraper API", "Firebase"],
-        liveUrl: "https://debug.game-corner.pages.dev/",
-    },
-    {
-        id: 3,
-        title: "Website AxManager Society",
-        category: "WEB",
-        description:
-            "Dikembangkan dari tugas sekolah Pak Tri Gunawan. AxManager adalah tools Android untuk modifikasi ringan (non-root) maupun berat (root). Saya jadi salah satu plugin developer di aplikasi ini (5 plugin, 3 di antaranya sudah tidak mendapat update). Website ini mengenalkan AxManager ke pengguna baru dan komunitas.",
-        image: "/img/axmanager_society.webp",
-        tags: ["React", "JavaScript", "Vite.js", "Tailwind CSS", "Play Store Scraper API", "Firebase"],
-        liveUrl: "https://debug.game-corner.pages.dev/",
-    },
-    {
-        id: 4,
-        title: "Project Qiunix",
-        category: "TOOLS",
-        description:
-            "Tools Android system optimizer yang saya kembangkan sendiri sebagai solo developer. Mengoptimalkan performa sistem Android yang dikenal berat dan boros RAM, terutama di perangkat Xiaomi/POCO/Redmi/Infinix/TECNO.",
-        image: "/img/qiunix_apollo.webp",
-        tags: ["Bash", "JavaScript", "Android", "Root", "KernelSU", "AxManager", "KernelSU API", "Vite.js", "React"],
-        customLink: "https://www.magiskmodule.com/qiunix-apollo",
-    },
-];
+// const projects: Project[] = [
+//     {
+//         id: 1,
+//         title: "Project AxVision",
+//         category: "TOOLS",
+//         description:
+//             "Tools Android system optimizer yang saya kembangkan sendiri sebagai solo developer. Mengoptimalkan performa sistem Android yang dikenal berat dan boros RAM, terutama di perangkat Xiaomi/POCO/Redmi/Infinix/TECNO.",
+//         image: "/img/axvision_hawk.webp",
+//         tags: ["Bash", "JavaScript", "Android", "Root", "KernelSU", "AxManager", "KernelSU API", "Vite.js", "React"],
+//         customLink: "https://www.magiskmodule.com/axvision",
+//     },
+//     {
+//         id: 2,
+//         title: "Website Game Corner",
+//         category: "WEB",
+//         description:
+//             "Project perdana saya yang merangkum semua skill yang sudah dipelajari. Website untuk aplikasi di Play Store milik teman/guru yang jadi salah satu orang pertama yang mengajarkan saya coding.",
+//         image: "/img/red_corner_project.webp",
+//         tags: ["React", "JavaScript", "Vite.js", "Tailwind CSS", "Play Store Scraper API", "Firebase"],
+//         liveUrl: "https://debug.game-corner.pages.dev/",
+//     },
+//     {
+//         id: 3,
+//         title: "Website AxManager Society",
+//         category: "WEB",
+//         description:
+//             "Dikembangkan dari tugas sekolah Pak Tri Gunawan. AxManager adalah tools Android untuk modifikasi ringan (non-root) maupun berat (root). Saya jadi salah satu plugin developer di aplikasi ini (5 plugin, 3 di antaranya sudah tidak mendapat update). Website ini mengenalkan AxManager ke pengguna baru dan komunitas.",
+//         image: "/img/axmanager_society.webp",
+//         tags: ["React", "JavaScript", "Vite.js", "Tailwind CSS", "Play Store Scraper API", "Firebase"],
+//         liveUrl: "https://debug.game-corner.pages.dev/",
+//     },
+//     {
+//         id: 4,
+//         title: "Project Qiunix",
+//         category: "TOOLS",
+//         description:
+//             "Tools Android system optimizer yang saya kembangkan sendiri sebagai solo developer. Mengoptimalkan performa sistem Android yang dikenal berat dan boros RAM, terutama di perangkat Xiaomi/POCO/Redmi/Infinix/TECNO.",
+//         image: "/img/qiunix_apollo.webp",
+//         tags: ["Bash", "JavaScript", "Android", "Root", "KernelSU", "AxManager", "KernelSU API", "Vite.js", "React"],
+//         customLink: "https://www.magiskmodule.com/qiunix-apollo",
+//     },
+// ];
 
 export default function Projects() {
     const {t} = useTranslation()
+    const [projects, setProjects] = useState<Project[]>([]);
+
+    useEffect(() => {
+        async function load() {
+            try {
+                const { data } = await supabase.from('projects').select('*');
+
+                setProjects(data ?? [])
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        load()
+    }, [])
+
+    console.log(projects)
+
     return (
         <section id="proyek" className="px-6 py-20 md:px-10 md:py-28 border-t">
             <div className="mb-10">
@@ -70,7 +90,7 @@ export default function Projects() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {projects.map((project) => (
-                    <ProjectCard key={project.title} project={project} />
+                    <ProjectCard key={project.id} project={project} />
                 ))}
             </div>
         </section>
@@ -78,9 +98,9 @@ export default function Projects() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-    const githubLink = project.githubUrl ? (
+    const githubLink = project.githubLink ? (
         <a
-            href={project.githubUrl}
+            href={project.githubLink}
             target="_blank"
             rel="noopener noreferrer"
             className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
@@ -89,9 +109,9 @@ function ProjectCard({ project }: { project: Project }) {
         </a>
     ) : null;
 
-    const liveLink = project.liveUrl ? (
+    const liveLink = project.demo_link ? (
         <a
-            href={project.liveUrl}
+            href={project.demo_link}
             target="_blank"
             rel="noopener noreferrer"
             className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
@@ -100,9 +120,9 @@ function ProjectCard({ project }: { project: Project }) {
         </a>
     ) : null;
 
-    const customLink = project.customLink ? (
+    const customLink = project.link ? (
         <a
-            href={project.customLink}
+            href={project.link}
             target="_blank"
             rel="noopener noreferrer"
             className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
@@ -117,7 +137,7 @@ function ProjectCard({ project }: { project: Project }) {
                 <div className="relative overflow-hidden rounded-xl w-full h-50">
                     <Image
                         src={project.image}
-                        alt={project.title}
+                        alt={project.name ?? "Project image"}
                         fill
                         className="object-cover scale-105 group-hover:brightness-50 group-hover:scale-110 transition-all duration-300"
                     />
@@ -130,11 +150,11 @@ function ProjectCard({ project }: { project: Project }) {
                 </div>
                 <div>
                     <p className="text-[12px] text-muted/80">{project.category}</p>
-                    <h3 className="text-2xl font-bold">{project.title}</h3>
+                    <h3 className="text-2xl font-bold">{project.name}</h3>
                 </div>
                 <p className="text-sm text-muted/80">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
+                    {project.tech.map((tag) => (
                         <span key={tag} className="text-xs w-fit px-2 py-0.5 rounded-full bg-white/10">
                             {tag}
                         </span>
