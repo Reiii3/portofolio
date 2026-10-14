@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { IoMdBriefcase } from "react-icons/io";
 import { MdInfo, MdLayers, MdMail } from "react-icons/md";
-import {useRouter} from "next/navigation";
+import { useRouter, usePathname } from "next/navigation"; // Import usePathname
 import { LangSwitcherMobile, LangSwitcherDesktop } from "../ui/LangSwitcher";
 import { useTranslation } from "react-i18next";
 
@@ -16,13 +16,35 @@ interface NavLink {
 export default function Nav() {
     const [scrolled, setScrolled] = useState(false);
     const [openTopBar, setOpenTopBar] = useState(false);
-    const {t} = useTranslation()
+    const [currentPath, setCurrentPath] = useState(""); // State untuk menyimpan path + hash aktif
+    
+    const { t } = useTranslation();
+    const pathname = usePathname();
+
+    // Fungsi untuk mengecek link aktif
+    const isActive = (href: string) => {
+        // Fallback agar tidak error saat first render (SSR)
+        if (!currentPath) return pathname === href; 
+        return currentPath.includes(href);
+    };
 
     useEffect(() => {
+        const handleHashChange = () => {
+            setCurrentPath(window.location.pathname + window.location.hash);
+        };
+        
+        handleHashChange();
+        window.addEventListener("hashchange", handleHashChange);
+
         const onScroll = () => setScrolled(window.scrollY > 8);
         onScroll();
         window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
+
+        // Cleanup listeners
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("hashchange", handleHashChange);
+        };
     }, []);
 
     const links: NavLink[] = [
@@ -50,7 +72,10 @@ export default function Nav() {
                         <li key={link.href}>
                         <a
                             href={link.href}
-                            className="transition-colors hover:text-copper-light"
+                            // Terapkan deteksi isActive di sini
+                            className={`transition-all ease-in-out duration-200 hover:text-copper-light ${
+                                isActive(link.href) ? "bg-surface-container-high px-5 py-1.5 rounded-full text-on-surface-variant" : ""
+                            }`}
                         >
                             {link.label}
                         </a>

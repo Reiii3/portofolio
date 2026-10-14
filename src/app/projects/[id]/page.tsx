@@ -1,14 +1,14 @@
 "use client";
 
 import { useParams } from "next/navigation";
-// import { dataProject } from "../data/dataProject";
-import { StaticImageData } from "next/image";
-import Image from "next/image";
-import { FaGithub } from "react-icons/fa";
+import Image, { StaticImageData } from "next/image";
+import { FaGithub, FaGlobe, FaArrowLeft } from "react-icons/fa";
+import { BsBoxSeamFill } from "react-icons/bs"; // Icon untuk Magisk
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
+import TraceGridBackground from "@/components/TraceGrid";
 
 interface Project {
     id: number;
@@ -27,29 +27,31 @@ export default function ProjectDetail() {
     const [dataProject, setDataProject] = useState<Project[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [labelStatus, setLabelStatus] = useState('');
+
     const project = dataProject.find((item) => item.id === Number(id));
 
     useEffect(() => {
         async function load() {
             try {
-                setIsLoading(true)
-                setLabelStatus('Initializing data projects...')
+                setIsLoading(true);
+                setLabelStatus('Initializing data projects...');
                 const { data } = await supabase.from('projects').select('*');
-                setDataProject(data ?? [])
-                setLabelStatus('Loading data projects...')
+                setDataProject(data ?? []);
+                setLabelStatus('Loading data projects...');
             } catch (error) {
-                console.log(error)
+                console.log(error);
             } finally {
-                setInterval(() => {
-                    setLabelStatus('Initializing data projects Successfully')
-                    setInterval(() => {
-                        setIsLoading(false)
-                    }, 1300);
-                }, 1300);
+                // PERBAIKAN: Gunakan setTimeout, bukan setInterval agar tidak memori bocor
+                setTimeout(() => {
+                    setLabelStatus('Data projects initialized successfully');
+                    setTimeout(() => {
+                        setIsLoading(false);
+                    }, 800);
+                }, 800);
             }
         }
-        load()
-    }, [])
+        load();
+    }, []);
     
     if (isLoading) {
         return <LoadingScreen label={labelStatus}/>
@@ -59,83 +61,104 @@ export default function ProjectDetail() {
         return <ProjectNotFound/>;
     }
 
-    const githubLink = project.githubLink ? (
-        <a
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
-        >
-            GitHub
-        </a>
-    ) : null;
-
-    const liveLink = project.demo_link ? (
-        <a
-            href={project.demo_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
-        >
-            Live Demo
-        </a>
-    ) : null;
-
-    const customLink = project.link ? (
-        <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
-        >
-            Magisk Module
-        </a>
-    ) : null
-
     return (
-        <section className="trace-grid h-screen gap-10 px-6 py-20 relative overflow-hidden">
-            <div className="flex flex-col items-center tablet:flex-row tablet:items-start gap-4 max-w-6xl mx-auto">
-                <div className="group flex w-full flex-col gap-2 tablet:w-105 lg:w-150 tablet:shrink-0 transition-all ease-in-out duration-300">
-                    <h1 className="text-4xl font-bold text-center mb-5">{project.name}</h1>
-                    <div className="flex flex-col items-center gap-3">
-                        <div className="relative overflow-hidden rounded-xl w-full h-70 tablet:h-80 lg:h-90">
-                            <Image
-                                src={project.image}
-                                alt={project.name ?? "Project Image"}
-                                fill
-                                className="object-cover scale-105 group-hover:brightness-50 group-hover:scale-110 transition-all duration-300"
-                            />
-                            <div className="absolute bottom-0 z-2 flex items-center justify-between p-3">
-                                <div className="bg-muted/50 cursor-pointer opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-300 flex items-center gap-1 px-3 py-2 rounded-full">
-                                    <FaGithub />
-                                    <p className="text-xs">Code</p>
-                                </div>
+        <section className="min-h-screen px-6 py-20 relative overflow-hidden flex flex-col justify-center">
+            <TraceGridBackground />
+            <div className="max-w-6xl mx-auto w-full">
+                
+                <Link 
+                    href="/#proyek" 
+                    className="inline-flex items-center gap-2 text-muted hover:text-copper-light transition-colors mb-8 font-mono text-sm"
+                >
+                    <FaArrowLeft /> Kembali ke Portofolio
+                </Link>
+
+                <div className="flex flex-col tablet:flex-row items-start gap-10">
+                    <div className="w-full tablet:w-1/2 lg:w-7/12 flex flex-col gap-4">
+                        <div className="group relative w-full rounded-2xl overflow-hidden shadow-2xl shadow-black/40 bg-surface-container-high border border-white/5">
+                            <div className="relative aspect-video w-full">
+                                <Image
+                                    src={project.image}
+                                    alt={project.name ?? "Project Image"}
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="flex flex-col gap-3">
-                    <div className="w-full flex flex-col gap-2 bg-surface-container rounded-2xl p-6">
-                        <h1 className="text-2xl font-bold">Tentang Project</h1>
-                        <p className="text-muted/80">{project.description}</p>
-                        <div className="flex flex-wrap gap-1.5">
-                            {project.tech.map((tag) => (
-                                <span key={tag} className="text-xs w-fit px-2 py-0.5 rounded-full bg-white/10">
-                                    {tag}
-                                </span>
-                            ))}
+
+                    {/* BAGIAN KANAN: Detail & Aksi */}
+                    <div className="w-full tablet:w-1/2 lg:w-5/12 flex flex-col gap-6">
+                        <div>
+                            {/* Kategori dimunculkan */}
+                            <span className="text-copper font-mono tracking-widest text-xs uppercase font-semibold mb-2 block">
+                                {project.category || "Project"}
+                            </span>
+                            <h1 className="text-4xl tablet:text-5xl font-gfbold text-paper mb-4 leading-tight">
+                                {project.name}
+                            </h1>
                         </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        {githubLink}
-                        {liveLink}
-                        {customLink}
+
+                        <div className="bg-surface-container/50 border border-board-line/50 rounded-2xl p-6 backdrop-blur-sm">
+                            <h2 className="text-lg font-semibold text-paper mb-3">Tentang Proyek</h2>
+                            <p className="text-muted leading-relaxed text-sm tablet:text-base">
+                                {project.description}
+                            </p>
+                            
+                            <div className="mt-6 pt-6 border-t border-board-line/50">
+                                <h3 className="text-sm font-semibold text-paper mb-3">Teknologi yang digunakan</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {project.tech.map((tag) => (
+                                        <span key={tag} className="text-xs font-mono px-3 py-1.5 rounded-md bg-primary/10 text-primary border border-primary/20">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Tombol Aksi - Lebih Pop-out */}
+                        <div className="flex flex-wrap items-center gap-3 mt-2">
+                            {project.githubLink && (
+                                <a
+                                    href={project.githubLink}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-sm font-semibold bg-surface-container hover:bg-surface-container-high text-paper border border-board-line px-5 py-2.5 rounded-lg transition-all"
+                                >
+                                    <FaGithub className="text-lg" /> Repository
+                                </a>
+                            )}
+                            {project.demo_link && (
+                                <a
+                                    href={project.demo_link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-sm font-semibold bg-primary hover:bg-primary/90 text-board px-5 py-2.5 rounded-lg transition-all"
+                                >
+                                    <FaGlobe className="text-lg" /> Live Demo
+                                </a>
+                            )}
+                            {project.link && (
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-sm font-semibold bg-copper hover:bg-copper-light text-board px-5 py-2.5 rounded-lg transition-all"
+                                >
+                                    <BsBoxSeamFill className="text-lg" /> Magisk Module
+                                </a>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     );
 }
+
+// Komponen ProjectNotFound tidak diubah, sudah oke.
 
 function ProjectNotFound() {
     return (

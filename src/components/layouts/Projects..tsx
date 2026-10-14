@@ -1,11 +1,13 @@
 "use client"
 import Image from "next/image";
 import { StaticImageData } from "next/image";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaGlobe } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { supabase } from "@/lib/supabase"
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BsBoxSeamFill } from "react-icons/bs";
+import { BiDetail } from "react-icons/bi";
 
 interface Project {
     id: number;
@@ -86,7 +88,7 @@ export default function Projects() {
         <section id="proyek" className="px-6 py-20 md:px-10 md:py-28 border-t">
             <div className="mb-10">
                 <h2 className="text-3xl font-bold">{t("techStack.title")}</h2>
-                <p className="text-sm text-muted/80 max-w-110">{t("techStack.desc")}</p>
+                <p className="text-sm mt-4 text-muted/80 max-w-110">{t("techStack.desc")}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {projects.map((project) => (
@@ -98,39 +100,6 @@ export default function Projects() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-    const githubLink = project.githubLink ? (
-        <a
-            href={project.githubLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
-        >
-            GitHub
-        </a>
-    ) : null;
-
-    const liveLink = project.demo_link ? (
-        <a
-            href={project.demo_link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
-        >
-            Live Demo
-        </a>
-    ) : null;
-
-    const customLink = project.link ? (
-        <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full"
-        >
-            Magisk Module
-        </a>
-    ) : null
-
     return (
         <div className="group transition-all duration-300">
             <div className="flex flex-col gap-4">
@@ -141,30 +110,58 @@ function ProjectCard({ project }: { project: Project }) {
                         fill
                         className="object-cover scale-105 group-hover:brightness-50 group-hover:scale-110 transition-all duration-300"
                     />
-                    <div className="absolute bottom-0 z-2 flex items-center justify-between p-3">
+                    {/* <div className="absolute bottom-0 z-2 flex items-center justify-between p-3">
                         <div className="bg-muted/50 cursor-pointer opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-300 flex items-center gap-1 px-3 py-2 rounded-full">
                             <FaGithub />
                             <p className="text-xs">Code</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div>
                     <p className="text-[12px] text-muted/80">{project.category}</p>
-                    <h3 className="text-2xl font-bold">{project.name}</h3>
+                    <h3 className="text-2xl font-gfbold">{project.name}</h3>
                 </div>
                 <p className="text-sm text-muted/80">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5">
                     {project.tech.map((tag) => (
-                        <span key={tag} className="text-xs w-fit px-2 py-0.5 rounded-full bg-white/10">
+                        <span key={tag} className="text-xs w-fit py-2 px-4 rounded-xl font-mono bg-white/10">
                             {tag}
                         </span>
                     ))}
                 </div>
                 <div className="flex items-center gap-3 mt-1">
-                    {githubLink}
-                    {liveLink}
-                    {customLink}
-                    <Link href={`/projects/${project.id}`} className="text-md font-semibold bg-primary text-on-secondary px-4 py-2 rounded-full">
+                    {project.githubLink && (
+                        <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-sm font-semibold bg-surface-container hover:bg-surface-container-high text-paper border border-board-line px-5 py-2.5 rounded-lg transition-all"
+                        >
+                            <FaGithub className="text-lg" /> Repository
+                        </a>
+                    )}
+                    {project.demo_link && (
+                        <a
+                            href={project.demo_link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-sm font-semibold bg-primary hover:bg-primary/90 text-board px-5 py-2.5 rounded-lg transition-all"
+                        >
+                            <FaGlobe className="text-lg" /> Live Demo
+                        </a>
+                    )}
+                    {project.link && (
+                        <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-sm font-semibold bg-copper hover:bg-copper-light text-board px-5 py-2.5 rounded-lg transition-all"
+                        >
+                            <BsBoxSeamFill className="text-lg" /> Magisk Module
+                        </a>
+                    )}
+                    <Link href={`/projects/${project.id}`} className="flex items-center gap-2 text-sm font-semibold bg-primary hover:bg-primary/90 text-board px-5 py-2.5 rounded-lg transition-all">
+                        <BiDetail className="text-lg" />
                         <p>Detail</p>
                     </Link>
                 </div>

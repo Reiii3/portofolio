@@ -1,7 +1,10 @@
+import TraceGridBackground from "./TraceGrid";
+
 export default function LoadingScreen({ label = "Memuat..." }: { label?: string }) {
     return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-between bg-board p-8 trace-grid">
-      {/* Header Info */}
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-between bg-board p-8">
+        <TraceGridBackground />
+        {/* Header Info */}
         <div className="w-full max-w-sm flex items-center justify-between font-mono text-xs text-muted">
             <span>SYS_BOOT // V16</span>
             <span className="animate-pulse">LOADING...</span>
