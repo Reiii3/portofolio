@@ -47,6 +47,9 @@ export default function Nav() {
         };
     }, []);
 
+    // Halaman admin punya navigasi sendiri
+    if (pathname.startsWith("/admin")) return null;
+
     const links: NavLink[] = [
         { href: "/#tentang", label: t("topPanel.listLink.about"), icon: MdLayers },
         { href: "/#stack", label: t("topPanel.listLink.stack"), icon: MdInfo },

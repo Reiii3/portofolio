@@ -286,3 +286,46 @@ body {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
+
+/* ===================== Material 3 (Admin) ===================== */
+@theme {
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --animate-snack: snack-in 350ms var(--ease-emphasized) both;
+  --animate-indeterminate: indeterminate 1.6s var(--ease-emphasized) infinite;
+}
+
+@keyframes snack-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes indeterminate {
+  0% { transform: translateX(-100%) scaleX(0.3); }
+  50% { transform: translateX(0) scaleX(0.6); }
+  100% { transform: translateX(100%) scaleX(0.3); }
+}
+
+/* State layer M3: overlay tipis saat hover / fokus / ditekan */
+@utility state-layer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: currentColor;
+    opacity: 0;
+    transition: opacity 150ms;
+    pointer-events: none;
+  }
+  &:hover::after { opacity: 0.08; }
+  &:focus-visible::after { opacity: 0.1; }
+  &:active::after { opacity: 0.12; }
+}
+
+/* Field punya indikator fokus sendiri (border), jadi outline global dimatikan */
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
