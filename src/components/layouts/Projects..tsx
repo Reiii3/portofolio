@@ -72,7 +72,7 @@ export default function Projects() {
     useEffect(() => {
         async function load() {
             try {
-                const { data } = await supabase.from('projects').select('*');
+                const { data } = await supabase.from('projects').select('*').order('id', { ascending: false });
 
                 setProjects(data ?? [])
             } catch (error) {
