@@ -53,7 +53,15 @@
         "desc": "I am currently a student at SMK Negeri 1 Pasuruan. I am busy with Android System Tool projects as well as various other projects such as the AxManager Plugin and KernelSU Manager.",
         "sendEmail": {
             "title": "Send Me a Message",
-            "desc": "Send a message to my email, and I will respond to you as soon as possible."
+            "desc": "Fill in the form below, your message goes straight to me and I will reply as soon as possible."
+        },
+        "form": {
+            "name": "Name",
+            "email": "Your email",
+            "message": "Message",
+            "send": "Send Message",
+            "sending": "Sending…",
+            "success": "Message sent! Thank you, I will reply soon."
         }
     }
 }

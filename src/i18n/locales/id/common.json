@@ -53,7 +53,15 @@
         "desc": "Saat ini saya berstatus sebagai Pelajar di SMK Negeri 1 Pasuruan. Saya memiliki kesibukan pada Project Tools System Android juga berbagai macam Project lainnya seperti AxManager Plugin dan KernelSU Manager.",
         "sendEmail": {
             "title": "Kirim Saya Pesan",
-            "desc": "Kirim pesan ke email saya, saya akan segera merespon pesan yang anda kirim"
+            "desc": "Isi form di bawah, pesan Anda langsung masuk ke saya dan akan segera saya balas."
+        },
+        "form": {
+            "name": "Nama",
+            "email": "Email Anda",
+            "message": "Pesan",
+            "send": "Kirim Pesan",
+            "sending": "Mengirim…",
+            "success": "Pesan terkirim! Terima kasih, saya akan segera membalas."
         }
     }
 }

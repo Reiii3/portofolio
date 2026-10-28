@@ -31,11 +31,11 @@ export default async function AdminProjectsPage({
   const needle = q.trim().toLowerCase();
   const projects = needle
     ? all.filter((p) =>
-        [p.name, p.category, ...(p.tech ?? [])].some((x) => x?.toLowerCase().includes(needle))
+        [p.name, ...(p.category ?? []), ...(p.tech ?? [])].some((x) => x?.toLowerCase().includes(needle))
       )
     : all;
 
-  const categoryCount = new Set(all.map((p) => p.category).filter(Boolean)).size;
+  const categoryCount = new Set(all.flatMap((p) => p.category ?? [])).size;
   const displayName = user.email?.split("@")[0] ?? "admin";
   const snack = error ?? (status ? STATUS_MESSAGES[status] : undefined) ?? dbError?.message;
 
@@ -112,11 +112,14 @@ export default async function AdminProjectsPage({
               <div className="min-w-0 flex-1">
                 <h2 className="truncate text-lg font-medium text-on-surface">{p.name}</h2>
                 <div className="mt-1 flex flex-wrap gap-1.5">
-                  {p.category && (
-                    <span className="rounded-lg bg-secondary-container px-2.5 py-1 text-xs text-on-secondary-container">
-                      {p.category}
+                  {(p.category ?? []).map((c) => (
+                    <span
+                      key={c}
+                      className="rounded-lg bg-secondary-container px-2.5 py-1 text-xs text-on-secondary-container"
+                    >
+                      {c}
                     </span>
-                  )}
+                  ))}
                   {(p.tech ?? []).slice(0, 2).map((t) => (
                     <span
                       key={t}

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsBoxSeamFill } from "react-icons/bs";
 import { BiDetail } from "react-icons/bi";
+import { PiDetective } from "react-icons/pi";
 
 interface Project {
     id: number;
@@ -82,19 +83,24 @@ export default function Projects() {
         load()
     }, [])
 
-    console.log(projects)
-
     return (
         <section id="proyek" className="px-6 py-20 md:px-10 md:py-28 border-t">
             <div className="mb-10">
                 <h2 className="text-3xl font-bold">{t("techStack.title")}</h2>
                 <p className="text-sm mt-4 text-muted/80 max-w-110">{t("techStack.desc")}</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {projects.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
-                ))}
-            </div>
+            { projects.length > 0 ?
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {projects.map((project) => (
+                        <ProjectCard key={project.id} project={project} />
+                    ))}
+                </div>
+                :
+                <div className="flex items-center justify-center flex-col gap-3 w-full">
+                    <PiDetective className="size-15" />
+                    <h1 className="font-gfbold text-2xl">Project Not Found</h1>
+                </div>
+            }
         </section>
     );
 }

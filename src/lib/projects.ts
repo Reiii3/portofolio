@@ -4,7 +4,7 @@ import type { FormState } from "@/lib/form-state";
 export interface ProjectRow {
   id: number;
   name: string;
-  category: string | null;
+  category: string[] | null;
   description: string | null;
   image: string | null;
   tech: string[] | null;
@@ -85,7 +85,7 @@ export function readProjectForm(fd: FormData): Parsed {
     values,
     data: {
       name: values.name,
-      category: values.category ? values.category.toUpperCase() : null,
+      category: parseTech(values.category).map((c) => c.toUpperCase()),
       description: values.description || null,
       image: values.image || null,
       tech: parseTech(values.tech),

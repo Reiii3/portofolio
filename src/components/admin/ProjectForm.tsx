@@ -1,11 +1,12 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import Link from "next/link";
 import { MdError } from "react-icons/md";
 import type { FormState } from "@/lib/form-state";
 import type { ProjectRow } from "@/lib/projects";
 import { TextArea, TextField } from "./fields";
+import ImageUpload from "./ImageUpload";
 import SubmitButton from "./SubmitButton";
 import { button } from "./m3";
 
@@ -19,6 +20,7 @@ export default function ProjectForm({
   submitLabel: string;
 }) {
   const [state, formAction] = useActionState(action, {} as FormState);
+  const [uploading, setUploading] = useState(false);
 
   // Setelah error, nilai yang sudah diketik dipertahankan
   const v = (key: keyof ProjectRow | "tech", fallback = "") => {
@@ -49,16 +51,10 @@ export default function ProjectForm({
             id="category"
             name="category"
             label="Kategori"
-            list="category-options"
             defaultValue={v("category")}
-            helper="Contoh: WEB, TOOLS, MOBILE"
+            helper="Pisahkan dengan koma, misalnya: WEB, TOOLS"
           />
         </div>
-        <datalist id="category-options">
-          <option value="WEB" />
-          <option value="TOOLS" />
-          <option value="MOBILE" />
-        </datalist>
         <TextArea
           id="description"
           name="description"
@@ -76,13 +72,7 @@ export default function ProjectForm({
 
       <section className="grid gap-5">
         <h2 className="text-lg font-medium text-on-surface">Gambar dan tautan</h2>
-        <TextField
-          id="image"
-          name="image"
-          label="Gambar"
-          defaultValue={v("image")}
-          helper="Path di folder public (/img/foto.webp) atau URL https"
-        />
+        <ImageUpload name="image" defaultValue={v("image")} onUploadingChange={setUploading} />
         <div className="grid gap-5 md:grid-cols-2">
           <TextField
             id="demo_link"
@@ -112,7 +102,7 @@ export default function ProjectForm({
         <Link href="/admin/projects" className={button("text", "lg")}>
           Batal
         </Link>
-        <SubmitButton>{submitLabel}</SubmitButton>
+        <SubmitButton disabled={uploading}>{submitLabel}</SubmitButton>
       </div>
     </form>
   );

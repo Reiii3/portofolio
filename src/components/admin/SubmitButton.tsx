@@ -8,16 +8,18 @@ export default function SubmitButton({
   pendingLabel = "Menyimpan…",
   variant = "filled",
   size = "lg",
+  disabled = false,
 }: {
   children: React.ReactNode;
   pendingLabel?: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  disabled?: boolean;
 }) {
   const { pending } = useFormStatus();
 
   return (
-    <button type="submit" disabled={pending} aria-busy={pending} className={button(variant, size)}>
+    <button type="submit" disabled={pending || disabled} aria-busy={pending} className={button(variant, size)}>
       {pending && (
         <span className="size-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
       )}
